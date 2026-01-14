@@ -1,23 +1,8 @@
 
 ## Architecture Diagram (Textual)
 
-Client
-  |
-  | POST /event (HTTP 202)
-  v
-FastAPI Application (Producer)
-  |
-  | enqueue (non-blocking)
-  v
-In-Memory Queue (Python Queue)
-  |
-  | batch consumption
-  v
-Background Worker Thread (Consumer)
-  |
-  | executemany() batch insert
-  v
-SQLite Database
+Client → POST /event (202) → FastAPI (Producer) → enqueue (non-blocking) → In-Memory Queue → batch consume → Background Worker → executemany() → SQLite
+
 
 ---
 
